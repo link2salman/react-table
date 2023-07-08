@@ -1,0 +1,19 @@
+// Basic ------------------------------------------------------------------------------------
+@import "Style/reset.scss";
+@import "Style/global_variables.scss";
+@import "Style/base.scss";
+@import "Style/services.scss";
+
+// Components -------------------------------------------------------------------------------
+@import "Style/components/post.scss";
+@import "Style/components/list.scss";
+@import "Style/components/button.scss";
+@import "Style/components/input.scss";
+@import "Style/components/togglebutton.scss";
+@import "Style/components/modal.scss";
+@import "Style/components/loader.scss";
+@import "Style/components/dropdownSelect.scss";
+@import "Style/components/select.scss";
+@import "Style/components/multiselect.scss";
+@import "Style/components/toaster.scss";
+@import "Style/components/table.scss";

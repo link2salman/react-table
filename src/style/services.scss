@@ -1,0 +1,61 @@
+@mixin btnfun($variant: solid) {
+    @if $variant ==solid {
+        background-color: rgba($btn-primary-bg, 0.8);
+        color: $btn-primary-text;
+        transition: all 0.2s ease-in-out;
+
+        &:hover,
+        :active {
+            background-color: rgba($btn-primary-bg, 1);
+        }
+    }
+
+    @else if $variant ==outline {
+        background-color: transparent;
+        color: $btn-secondary-text;
+        border: 1px solid $btn-secondary-text;
+        transition: all 0.2s ease-in-out;
+
+        &:hover,
+        :active {
+            background-color: rgba($btn-secondary-text, 0.05);
+        }
+    }
+
+    @else if $variant ==ghost {
+        background-color: transparent;
+        color: $btn-grayed-text;
+
+        &:hover,
+        :active {
+            background-color: rgba($btn-grayed-text, 0.1);
+        }
+    }
+
+    @else if $variant ==link {
+        background: transparent;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            height: 1px;
+            width: 100%;
+            background: $btn-secondary-text;
+            bottom: 0px;
+            display: none;
+        }
+
+        &:hover::before {
+            display: inline-block;
+        }
+    }
+}
+
+@mixin flex($justify: start, $align: start, $dir: row, $gap: 0px) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $dir;
+    gap: $gap;
+}

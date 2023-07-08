@@ -1,0 +1,248 @@
+.toaster-container {
+    width: auto;
+    min-width: 350px;
+    height: auto;
+    min-height: 70px;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: 20px;
+    display: inline-flex;
+    visibility: hidden;
+    justify-content: start;
+    gap: 0px 10px;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    animation-timing-function: linear, linear, linear;
+
+    &:hover {
+        animation-play-state: paused;
+    }
+
+    &:hover .pellete {
+        animation-play-state: paused;
+    }
+
+    @keyframes topleftdisappear {
+        0% {
+            transform: translateX(0px);
+        }
+
+        100% {
+            transform: translateX(-1000px);
+        }
+    }
+
+    @keyframes bottomleftdisappear {
+        0% {
+            transform: translateX(0px);
+        }
+
+        100% {
+            transform: translateX(-1000px);
+        }
+    }
+
+    @keyframes toprightdisappear {
+        0% {
+            transform: translateX(0px);
+        }
+
+        100% {
+            transform: translateX(1000px);
+        }
+    }
+
+    @keyframes bottomrightdisappear {
+        0% {
+            transform: translateX(0px);
+        }
+
+        100% {
+            transform: translateX(1000px);
+        }
+    }
+
+    @keyframes topleft {
+        0% {
+            transform: translateX(-200px);
+        }
+
+        25% {
+            transform: translateX(10px);
+        }
+
+        50% {
+            transform: translateX(-10px);
+        }
+
+        100% {
+            transform: translateX(0px);
+        }
+    }
+
+    @keyframes bottomleft {
+        0% {
+            transform: translateX(-200px);
+        }
+
+        25% {
+            transform: translateX(10px);
+        }
+
+        50% {
+            transform: translateX(-10px);
+        }
+
+        100% {
+            transform: translateX(0px);
+        }
+    }
+
+    @keyframes topright {
+        0% {
+            transform: translateX(200px);
+        }
+
+        25% {
+            transform: translateX(-10px);
+        }
+
+        50% {
+            transform: translateX(10px);
+        }
+
+        100% {
+            transform: translateX(0px);
+        }
+    }
+
+    @keyframes bottomright {
+        0% {
+            transform: translateX(200px);
+        }
+
+        25% {
+            transform: translateX(-10px);
+        }
+
+        50% {
+            transform: translateX(10px);
+        }
+
+        100% {
+            transform: translateX(0px);
+        }
+    }
+
+    @keyframes isvisible {
+        0% {
+            visibility: hidden;
+        }
+
+        100% {
+            visibility: visible;
+        }
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 0;
+        right: 0px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 13px;
+            height: 15px;
+            border-left: 2px solid gray;
+            transform: rotate(45deg);
+            transform-origin: bottom left;
+            top: 7px;
+            right: 12px;
+            cursor: pointer;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 13px;
+            height: 15px;
+            border-right: 2px solid gray;
+            transform: rotate(-45deg);
+            transform-origin: bottom right;
+            top: 7px;
+            right: 15px;
+            cursor: pointer;
+        }
+    }
+
+
+
+    &.topright {
+        right: 15px;
+        top: 15px;
+    }
+
+    &.bottomright {
+        right: 15px;
+        bottom: 15px;
+    }
+
+    &.bottomleft {
+        left: 15px;
+        bottom: 15px;
+
+    }
+
+    &.topleft {
+        top: 15px;
+        left: 15px;
+    }
+
+    .icons {
+        width: 25px;
+    }
+
+    .pellete {
+        width: 0;
+        height: 5px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        animation-name: colormove;
+        animation-duration: 2s;
+        animation-delay: 0;
+        animation-timing-function: linear;
+
+        &.success {
+            background-color: #5cb85c;
+        }
+
+        &.warning {
+            background-color: #f0ad4e;
+        }
+
+        &.error {
+            background-color: #d9534f;
+        }
+
+        &.info {
+            background-color: #5bc0de;
+        }
+
+        @keyframes colormove {
+            0% {
+                width: 100%;
+                right: 0;
+            }
+
+            100% {
+                width: 0;
+            }
+        }
+    }
+}

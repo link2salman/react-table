@@ -1,0 +1,103 @@
+.input-wrapper {
+    @include flex($justify: start, $align: center, $dir: column, $gap: 8px);
+
+    &.flex {
+        @include flex($justify: start, $align: center, $dir: row, $gap: 16px);
+    }
+
+    &.flex-reverse {
+        @include flex($justify: start, $align: center, $dir: row-reverse, $gap: 16px);
+    }
+
+    label {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 16px;
+        color: $input-label-color;
+    }
+
+    input {
+        padding: 16px;
+
+        &::placeholder {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 16px;
+            color: $input-label-color;
+        }
+    }
+
+    &.outline>input {
+        border: none;
+        box-shadow: 0 0 1px 1px $input-border-color;
+        background: $input-bg;
+        outline-color: $input-border-color;
+    }
+
+    &.filled>input {
+        outline: none;
+        border: none;
+        background: $input-bg;
+
+        &:focus {
+            background: transparent;
+            outline: auto;
+            outline-color: $input-border-color;
+        }
+
+        &:hover {
+            background: transparent;
+            outline: auto;
+            outline-color: $input-border-color;
+        }
+    }
+
+    &.flushed>input {
+        outline: none;
+        border: none;
+        border-radius: 0px;
+        border-bottom: 1px solid $input-border-color;
+        padding: 8px 0px;
+
+        &:focus {
+            border-bottom: 2px solid $input-border-color;
+        }
+    }
+
+    &.unstyled>input {
+        outline: none;
+        border: none;
+        padding: 8px 0px;
+    }
+
+    input[type=checkbox] {
+        width: 16px;
+        height: 16px;
+        background: $input-checkbox-bg;
+        border: 1px solid $checkbox-border-color;
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: none;
+        cursor: pointer;
+    }
+
+    input[type=checkbox]:checked {
+        accent-color: $checkbox-chekecd-bg;
+    }
+
+    input[type=radio] {
+        width: 16px;
+        height: 16px;
+        background: $radio-bg;
+        box-shadow: none;
+        border: 0.5px solid $radio-border-color;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    input[type=radio]:checked {
+        accent-color: $checkbox-chekecd-bg;
+    }
+
+
+}

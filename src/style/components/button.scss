@@ -1,0 +1,90 @@
+.btn {
+    @include flex(center, center, row, 8px);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &-spinner {
+        width: 2rem;
+        height: 2rem;
+    }
+}
+
+.btn.solid {
+    @include btnfun(solid);
+}
+
+.btn.outline {
+    @include btnfun(outline);
+}
+
+.btn.ghost {
+    @include btnfun(ghost);
+}
+
+.btn.link {
+    @include btnfun(link);
+}
+
+.btn.sm {
+    padding: 4px 8px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+
+    &.sm.outline {
+        padding: 7px 15px;
+    }
+
+    &>img {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+.btn.md {
+    padding: 6px 12px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+
+    &.md.outline {
+        padding: 7px 15px;
+    }
+
+    &>img {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+.btn.lg {
+    padding: 8px 16px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+
+    &.lg.outline {
+        padding: 7px 15px;
+    }
+
+    &>img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.reverse {
+    flex-direction: row-reverse;
+}
+
+.btn:disabled,
+.btn[disabled] {
+    cursor: not-allowed;
+    pointer-events: none;
+    border: none;
+    color: $btn-disabled-text;
+    cursor: inherit;
+    background-color: $btn-disabled-bg;
+}

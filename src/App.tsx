@@ -20,7 +20,6 @@ const App = () => {
             sort: true,
             sortKey: "post_title",
             with: 40,
-            // headRender: (content: ColumnsTypes, callback: OnChangeEventType) => <input onChange={(e) => callback({"post_title", e.target.value})} type="text" />,
             // render: (value: any, content: any, callback: OnChangeEventType) => <input type='checkbox' onChange={(e) => callback(content, e.target.checked)} />
             headRender: (content: ColumnsTypes, callback: OnChangeEventType) => <input onChange={(e) => callback({ key: "post_title", value: e.target.value })} type="text" />,
         },

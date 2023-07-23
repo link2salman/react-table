@@ -1,30 +1,39 @@
-import { TableHeadingTypes } from "./tableProps"
+import HeaderChange from './HeaderChange'
+
+import { classNames, orderMapper } from './helper'
+
+import { TableHeadingTypes } from './tableProps'
 
 const TableHead = (props: TableHeadingTypes) => {
+  const {
+    column: { textAlign, sortKey: sortBy, dataKey, fixed, sort, header: title, width },
+    sortIcon: customIcon,
+  } = props
 
-    const headClasses = props.column.textAlign ? `text-align-${props.column.textAlign}` : ""
-    const columnFIxedClass = props.column.fixed ? props.column.fixed : ""
+  const headClasses = classNames('table-heading', { [`text-align-${textAlign}`]: textAlign, [`${fixed}`]: fixed })
 
-    const sortKey = props.column.sortKey ? props.column.sortKey : props.column.dataKey
+  const sortKey = sortBy ? sortBy : dataKey
 
-    const sortIconClass = (props.sortIcon && props.column.sort) ? "sort-icon" : `default-sort-icon ${props.order ? props.order.key == sortKey ? props.order.order : "" : ""}`
+  const sortIconClass = customIcon && sort ? 'sort-icon' : `default-sort-icon`
 
-    const sortIcon = props.column.sort && <div className={sortIconClass} >{props.sortIcon && <img src={props.sortIcon} alt="" />}</div>
+  const sortIcon = sort && (
+    <div className={sortIconClass} onClick={() => props.onSort && props.onSort(sortKey, orderMapper(sortKey))}>
+      {customIcon && <img src={customIcon} alt="" />}
+    </div>
+  )
 
-    return (
-        <th className={`table-heading ${headClasses} ${columnFIxedClass} `} style={{ width: `${props.column.with}%`, verticalAlign: `${props.column.headRender ? "top" : "baseline"}` }}>
-            <div className="table-heading-wrapper">
-                <div className="column-heading" onClick={() => props.onSort && props.onSort(sortKey)}>
-                    <div className="table-heading-title" >{props.column.header}</div>
-                    {sortIcon}
-                </div>
-                {/* {props.column.headRender && props.onChange && <div className="rendered-heading-element">{props.column.headRender(props.column, props.onChange)}</div>} */}
+  const header = typeof title === 'string' ? title : <HeaderChange header={title} onHeadChange={props.onHeadChange} dataKey={dataKey} />
 
-                {props.column.headRender && props.onHeaderChange && <div className="rendered-heading-element">{props.column.headRender(props.column, props.onHeaderChange)}</div>}
-
-            </div>
-        </th>
-    )
+  return (
+    <th className={headClasses} style={{ width: `${width}%` }}>
+      <div className="table-heading-wrapper">
+        <div className="column-heading">
+          <div className="table-heading-title">{header}</div>
+          {sortIcon}
+        </div>
+      </div>
+    </th>
+  )
 }
 
 export default TableHead

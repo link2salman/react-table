@@ -1,22 +1,23 @@
+import { classNames } from './helper'
+
 const TableCell = (props: any) => {
+  const classes = classNames('table-cell', {
+    [`text-align-${props.column.textAlign}`]: props.column.textAlign,
+    [`${props.column.fixed}`]: props.column.fixed,
+  })
 
-    const headClasses = props.column.textAlign ? `text-align-${props.column.textAlign}` : ""
-    const columnFIxedClass = props.column.fixed ? props.column.fixed : ""
+  const {render, ...rest} = props.column
 
-    return (
-        <td className={`table-cell ${headClasses} ${columnFIxedClass} `}>
-            <div className="table-cell-wrapper">
-                <div className="table-data">
-                    {props.column.render && props.column.render(
-                        props.data,
-                        props.row,
-                        props.onChange,
-                    )}
-                    {!props.column.render && props.data}
-                </div>
-            </div>
-        </td>
-    )
+  return (
+    <td className={classes}>
+      <div className="table-cell-wrapper">
+        <div className="table-data">
+          {props.column.render && props.column.render(rest, props.row, props.onRowChange)}
+          {!props.column.render && props.data}
+        </div>
+      </div>
+    </td>
+  )
 }
 
 export default TableCell
